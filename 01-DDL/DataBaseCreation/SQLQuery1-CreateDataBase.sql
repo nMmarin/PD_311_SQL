@@ -1,7 +1,7 @@
 CREATE DATABASE PD_311_DDL  
 ON 
 (
-	NAME = N'PD_311_DDL_dat',       
+	NAME = PD_311_DDL_dat,       
 	FILENAME = N'B:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\PD_311_DDL.mdf',     
 	SIZE = 8MB,      
 	MAXSIZE = 512MB,       
@@ -9,7 +9,7 @@ ON
 )  
 LOG ON 
 (
-	NAME = N'PD_311_DDL_log',         
+	NAME = PD_311_DDL_log,         
 	FILENAME = N'B:\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\PD_311_DDL.ldf',
 	SIZE = 8MB,      
 	MAXSIZE = 512MB,       
