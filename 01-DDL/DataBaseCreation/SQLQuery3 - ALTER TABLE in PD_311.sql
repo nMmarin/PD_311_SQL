@@ -1,0 +1,5 @@
+USE PD_311;
+
+ALTER TABLE Groups
+DROP COLUMN group_id
+

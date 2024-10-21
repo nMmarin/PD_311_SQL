@@ -1,24 +1,24 @@
 USE PD_311_DDL;
-/*CREATE TABLE Directions 
-( 
-direction_id SMALLINT PRIMARY KEY,
-direction_name NVARCHAR(150) NOT NULL,
-);
-CREATE TABLE Groups 
-(
-group_id INT PRIMARY KEY,
-group_name NVARCHAR(16) NOT NULL,
-direction SMALLINT NOT NULL CONSTRAINT FK_Drections_Groups FOREIGN KEY REFERENCES Directions(direction_id)
-);
-CREATE TABLE Students 
-(
-student_id INT PRIMARY KEY IDENTITY (1,1),
-last_name NVARCHAR(150) NOT NULL,
-first_name NVARCHAR(150) NOT NULL,
-middle_name NVARCHAR(150) ,
-birth_date DATE NOT NULL,
-[group] INT NOT NULL CONSTRAINT FK_Groups_Students FOREIGN KEY REFERENCES Groups(group_id)
-);*/
+--CREATE TABLE Directions 
+--( 
+--direction_id SMALLINT PRIMARY KEY,
+--direction_name NVARCHAR(150) NOT NULL,
+--);
+--CREATE TABLE Groups 
+--(
+--group_id INT PRIMARY KEY,
+--group_name NVARCHAR(16) NOT NULL,
+--direction SMALLINT NOT NULL CONSTRAINT FK_Drections_Groups FOREIGN KEY REFERENCES Directions(direction_id)
+--);
+--CREATE TABLE Students 
+--(
+--student_id INT PRIMARY KEY IDENTITY (1,1),
+--last_name NVARCHAR(150) NOT NULL,
+--first_name NVARCHAR(150) NOT NULL,
+--middle_name NVARCHAR(150) ,
+--birth_date DATE NOT NULL,
+--[group] INT NOT NULL CONSTRAINT FK_Groups_Students FOREIGN KEY REFERENCES Groups(group_id)
+--);
 --CREATE TABLE ReportTypes
 --(
 --report_type_id TINYINT PRIMARY KEY,
@@ -92,25 +92,25 @@ birth_date DATE NOT NULL,
 --[subject] NVARCHAR(256),
 --spent BIT NOT NULL
 --);
-CREATE TABLE Exams
-(
-student INT,
-lesson BIGINT,
-PRIMARY KEY(student,lesson),
-CONSTRAINT FK_Exams_Students FOREIGN KEY(student) REFERENCES Students(student_id),
-CONSTRAINT FK_Exams_Schedule FOREIGN KEY(lesson) REFERENCES Schedule (lesson_id),
-grade TINYINT CONSTRAINT CK_grade CHECK (grade>=0 AND grade <=12)
-);
-CREATE TABLE Grades 
-(
-student INT,
-lesson BIGINT,
-PRIMARY KEY(student,lesson),
-CONSTRAINT FK_Grades_Students FOREIGN KEY(student) REFERENCES Students(student_id),
-CONSTRAINT FK_Grades_Schedule FOREIGN KEY(lesson) REFERENCES Schedule(lesson_id),
-grade_1  TINYINT CONSTRAINT CK_grade1 CHECK (grade_1>0 AND grade_1 <=12),
-grade_2  TINYINT CONSTRAINT CK_grade2 CHECK (grade_2>0 AND grade_2 <=12)
-);
+--CREATE TABLE Exams
+--(
+--student INT,
+--lesson BIGINT,
+--PRIMARY KEY(student,lesson),
+--CONSTRAINT FK_Exams_Students FOREIGN KEY(student) REFERENCES Students(student_id),
+--CONSTRAINT FK_Exams_Schedule FOREIGN KEY(lesson) REFERENCES Schedule (lesson_id),
+--grade TINYINT CONSTRAINT CK_grade CHECK (grade>=0 AND grade <=12)
+--);
+--CREATE TABLE Grades 
+--(
+--student INT,
+--lesson BIGINT,
+--PRIMARY KEY(student,lesson),
+--CONSTRAINT FK_Grades_Students FOREIGN KEY(student) REFERENCES Students(student_id),
+--CONSTRAINT FK_Grades_Schedule FOREIGN KEY(lesson) REFERENCES Schedule(lesson_id),
+--grade_1  TINYINT CONSTRAINT CK_grade1 CHECK (grade_1>0 AND grade_1 <=12),
+--grade_2  TINYINT CONSTRAINT CK_grade2 CHECK (grade_2>0 AND grade_2 <=12)
+--);
 
 
 
