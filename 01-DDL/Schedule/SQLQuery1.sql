@@ -14,18 +14,46 @@ PRINT (@teacher)
 PRINT (@number_of_lessons)
 
 DECLARE @lesson AS SMALLINT = 0;
-WHILE @lesson<@number_of_lessons
-BEGIN
-PRINT(FORMATMESSAGE(N'%s %s','Дата:', CAST(@date AS NVARCHAR(50))))
-PRINT(FORMATMESSAGE(N'%s %s','Вермя:',CAST(@time AS NVARCHAR(50))))
-PRINT(FORMATMESSAGE(N'%s %i','Урок №:',@lesson));
-SET @lesson=@lesson+1;
-PRINT ('-----------------------------------------------')
+--WHILE @lesson < @number_of_lessons
+--BEGIN
+--	--PRINT(FORMATMESSAGE(N'%s %s','Дата:', CAST(@date AS NVARCHAR(50))))
+--	--PRINT(FORMATMESSAGE(N'%s %s','День:', DATENAME(WEEKDAY,@date)));
+--	--PRINT(FORMATMESSAGE(N'%s %s','Вермя:',CAST(@time AS NVARCHAR(50))))
+--	--PRINT(FORMATMESSAGE(N'%s %i','Урок №:',@lesson));
+--		INSERT 
+--		Schedule	([date],[time],[group],disciplne,teacher,spent)
+--		VALUES		(@date,@time,@group,@discipline,@teacher,IIF(@date<GETDATE(),1,0))
+--	SET @lesson=@lesson+1;
+--	IF @lesson < @number_of_lessons
+--	BEGIN
+--		--PRINT(FORMATMESSAGE(N'%s %s','Дата:', CAST(@date AS NVARCHAR(50))));
+--		--PRINT(FORMATMESSAGE(N'%s %s','Вермя:', CAST(DATEADD(MINUTE,90,@time)AS NVARCHAR(50))));
+--		--PRINT(FORMATMESSAGE(N'%s %i','Урок №:',@lesson));
+--			INSERT 
+--		Schedule	([date],[time],						[group],	disciplne,	teacher,	spent)
+--		VALUES		(@date, DATEADD(MINUTE, 90, @time), @group,		@discipline,@teacher,	IIF(@date < GETDATE(),1,0))
+--		SET @lesson=@lesson+1;
+--	END
+--	SET @date= DATEADD(DAY,IIF(DATEPART(WEEKDAY, @date)=6,3,2),@date);
+--PRINT ('-----------------------------------------------')
+
+--END
+GO
+SELECT 
+	[Дата]=[date],
+	[Время]=[time],
+	[День]=DATENAME(WEEKDAY,[date]),
+	[Группа]=group_name,
+	[Дисциплина]=discipline_name,
+	[Преподователь]=FORMATMESSAGE(N'%s %s %s',last_name,first_name,middle_name),
+	[Стату проведения]= IIF (spent=1, N'Проведено',N'Запланировано')
+FROM		Schedule,Groups,Disciplines,Teachers
+WHERE		[group] = group_id
+AND			disciplne = discipline_id
+AND			teacher = teacher_id
 --INSERT 
 --Schedule	([date],[time],[group],disciplne,teacher,spent)
 --VALUES		('2024-10-21','13:30',
-END
-
 
 --SELECT * FROM Teachers;
-SELECT * FROM Disciplines;
+--SELECT * FROM Disciplines;
